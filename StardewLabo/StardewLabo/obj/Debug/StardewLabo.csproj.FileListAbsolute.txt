@@ -1,0 +1,6 @@
+D:\StardewLabo\StardewLabo\StardewLabo\bin\Debug\StardewLabo.dll
+D:\StardewLabo\StardewLabo\StardewLabo\bin\Debug\StardewLabo.pdb
+D:\StardewLabo\StardewLabo\StardewLabo\obj\Debug\StardewLabo.csproj.CoreCompileInputs.cache
+D:\StardewLabo\StardewLabo\StardewLabo\obj\Debug\StardewLabo.dll
+D:\StardewLabo\StardewLabo\StardewLabo\obj\Debug\StardewLabo.pdb
+D:\StardewLabo\StardewLabo\StardewLabo\obj\Debug\StardewLabo.csprojAssemblyReference.cache
