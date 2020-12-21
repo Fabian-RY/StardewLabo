@@ -26,10 +26,9 @@ namespace StardewLabo
                 description = "Permite almacenar máquinas biotecnológicas",
                 daysToConstruct = daysToBuild,//4
                 moneyRequired = moneyCost, //40000
-                tilesWidth = 5,
-                tilesHeight = 5,
-                //mapToWarpTo = "Maps\\Laboratory",
-                humanDoor = new Point(2, 4)
+                tilesWidth = 7,
+                tilesHeight = 3,
+                humanDoor = new Point(3, 2)
             };
             bp.itemsRequired.Clear();
             bp.itemsRequired.Add(709, 100);//200

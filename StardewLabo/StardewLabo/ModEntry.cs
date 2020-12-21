@@ -22,8 +22,6 @@ namespace StardewLabo
         // Constants
 
         private const string buildingType = "Laboratory";
-        private readonly string BuildtPath = Path.Combine("Buildings", buildingType);
-        private readonly string defaultPath = Path.Combine("assets", "Laboratory.png");
         private ITranslationHelper i18n;
         private Map LaboInside;
         private Texture2D LaboOutdoor;
@@ -34,7 +32,6 @@ namespace StardewLabo
         private int clayCost = 20;
         private int moneyCost = 10000;
         private int daysToBuild = 0;
-
         private DataSaved data;
 
         /*********
@@ -53,11 +50,12 @@ namespace StardewLabo
             i18n = helper.Translation;
             //LaboInside = helper.Content.Load<Map>("assets/LaboInside.tbin");
             this.LaboOutdoor = this.Helper.Content.Load<Texture2D>("assets/Labo.png");
-            this.LaboInside = this.Helper.Content.Load<Map>("assets\\Winery.tbin");
+            this.LaboInside = this.Helper.Content.Load<Map>("assets\\Laboratory.tbin");
         }
 
         private void OnDayStarted(object sender, DayStartedEventArgs e) {
             Monitor.Log("OnDayStarted", LogLevel.Debug);
+            //this.Helper.Content.InvalidateCache("Maps/Laboratory");
         }
 
         private void OnDayEnding(object sender, DayEndingEventArgs e)
@@ -78,11 +76,12 @@ namespace StardewLabo
             foreach (Building b in Game1.getFarm().buildings)
             {
                 /// Cambiamos el tipo de edificio si encontramos una cabaña en el lugar donde está el laboratorio
-                if (b.buildingType.Value.Equals("Shed") && this.data.LaboCoordinatesX == b.tileX.Value && this.data.LaboCoordinatesY == b.tileY.Value )
+                if (b.buildingType.Value.Equals("Shed") && this.data.LaboCoordinatesX == b.tileX.Value && this.data.LaboCoordinatesY == b.tileY.Value)
                 {
                     b.buildingType.Value = "Laboratory";
                     b.indoors.Value.mapPath.Value = "Maps\\Laboratory";
                     b.indoors.Value.updateMap();
+                    //b.updateInteriorWarps();
                 }
             }
         }
@@ -99,10 +98,6 @@ namespace StardewLabo
                     b.indoors.Value.mapPath.Value = "Maps\\Shed";
                     b.indoors.Value.updateMap();
                     Monitor.Log("Entering Laboratory", LogLevel.Debug);
-                    Monitor.Log("TileX: " + b.tileX.Value.ToString(), LogLevel.Debug);
-                    Monitor.Log("TileY: " + b.tileY.Value.ToString(), LogLevel.Debug);
-                    Monitor.Log("LaboX: " + this.data.LaboCoordinatesX.ToString(), LogLevel.Debug);
-                    Monitor.Log("Laboy: " + this.data.LaboCoordinatesY.ToString(), LogLevel.Debug);
                     this.data.LaboCoordinatesX = b.tileX.Value;
                     this.data.LaboCoordinatesY = b.tileY.Value;
                     this.data.LaboBuilded = true;
